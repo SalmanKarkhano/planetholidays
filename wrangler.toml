@@ -1,0 +1,5 @@
+name = "planetholidays"
+compatibility_date = "2026-04-17"
+
+[site]
+bucket = "."

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Planet Holidays</title>
+  <meta name="description" content="Get in touch with Planet Holidays. Plan your luxury Maldives or Sri Lanka holiday today. Call +960 797 2717 or email hello@planetholidays.travel.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact — Planet Holidays">
+  <meta property="og:description" content="Plan your luxury Maldives or Sri Lanka holiday. Call +960 797 2717 or email hello@planetholidays.travel.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Syne:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">✦</span>
+        Planet Holidays
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="destinations.html" class="nav__link">Destinations</a>
+        <a href="offers.html" class="nav__link">Offers</a>
+        <a href="events.html" class="nav__link">Events</a>
+        <a href="contact.html" class="nav__link is-active">Contact</a>
+        <a href="contact.html" class="nav__cta">Book a Trip</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="offers.html">Offers</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Tropical beach">
+    </div>
+    <div class="page-hero__gradient"></div>
+    
+    <div class="container">
+      <div class="page-hero__breadcrumb reveal">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span>Contact</span>
+      </div>
+      <p class="t-caption reveal" style="margin-bottom: 1rem;">Let's Talk</p>
+      <h1 class="t-h1 reveal">Start Planning Your<br><span style="color: var(--c-accent);">Dream Getaway</span></h1>
+      <p class="t-body-lg reveal" style="max-width: 520px; margin-top: 1.5rem;">
+        Whether you have a specific destination in mind or need inspiration — 
+        our travel experts are ready to help.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT FORM & INFO ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="reveal">
+          <p class="t-caption" style="margin-bottom: 0.75rem;">Send a Message</p>
+          <h2 class="t-h3" style="margin-bottom: 2rem;">Tell Us About Your Dream Trip</h2>
+          
+          <form class="contact-form" id="contactForm" action="#" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Doe" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 234 567 890">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="destination">Preferred Destination</label>
+              <select id="destination" name="destination" class="form-input" required>
+                <option value="" disabled selected>Select a destination</option>
+                <option value="maldives">Maldives</option>
+                <option value="sri-lanka">Sri Lanka</option>
+                <option value="both">Both — Maldives & Sri Lanka</option>
+                <option value="other">Not Sure — Need Recommendations</option>
+              </select>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="travelDate">Preferred Travel Date</label>
+                <input type="date" id="travelDate" name="travelDate" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="travelers">Number of Travelers</label>
+                <select id="travelers" name="travelers" class="form-input">
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1 Traveler</option>
+                  <option value="2">2 Travelers (Couple)</option>
+                  <option value="3-4">3–4 Travelers</option>
+                  <option value="5+">5+ Travelers (Group)</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your dream trip — budget, activities, special occasions, any specific resorts you're interested in..." rows="5"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn--primary" style="align-self: flex-start;">
+              Send Inquiry <span class="btn__arrow">→</span>
+            </button>
+          </form>
+        </div>
+        
+        <!-- Info -->
+        <div>
+          <div class="contact-info reveal">
+            <div>
+              <p class="t-caption" style="margin-bottom: 0.75rem;">Contact Information</p>
+              <h2 class="t-h3" style="margin-bottom: 2rem;">We'd Love to<br>Hear from You</h2>
+            </div>
+            
+            <div class="contact-info__item">
+              <div class="contact-info__icon">📍</div>
+              <div>
+                <p class="contact-info__label">Office</p>
+                <p class="contact-info__value">
+                  Ma. Fas Eri, 7th Floor,<br>
+                  Ameenee Magu, Malé,<br>
+                  Maldives 20205
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-info__item">
+              <div class="contact-info__icon">📞</div>
+              <div>
+                <p class="contact-info__label">Phone</p>
+                <p class="contact-info__value">
+                  <a href="tel:+9607972717">+960 797 2717</a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-info__item">
+              <div class="contact-info__icon">✉</div>
+              <div>
+                <p class="contact-info__label">Email</p>
+                <p class="contact-info__value">
+                  <a href="mailto:hello@planetholidays.travel">hello@planetholidays.travel</a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-info__item">
+              <div class="contact-info__icon">🕐</div>
+              <div>
+                <p class="contact-info__label">Business Hours</p>
+                <p class="contact-info__value">
+                  Sunday – Thursday: 9:00 AM – 6:00 PM (MVT)<br>
+                  <span style="color: var(--c-text-muted); font-size: 0.85rem;">We respond to inquiries within 24 hours</span>
+                </p>
+              </div>
+            </div>
+            
+            <div class="contact-info__item">
+              <div class="contact-info__icon">💬</div>
+              <div>
+                <p class="contact-info__label">Social Media</p>
+                <p class="contact-info__value">
+                  <a href="https://facebook.com/planetholidaysmv" target="_blank" rel="noopener noreferrer">Facebook</a> · 
+                  <a href="https://www.instagram.com/planet.holidaysmv/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Map -->
+          <div class="contact-map reveal">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8!2d73.5093!3d4.1755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMTAnMzEuOCJOIDczwrAzMCczMy41IkU!5e0!3m2!1sen!2smv!4v1" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Planet Holidays Office Location">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section section--compact" style="background: var(--c-bg-elevated);">
+    <div class="container container--content">
+      <div class="section-header section-header--center reveal">
+        <p class="section-header__tag t-caption">FAQ</p>
+        <h2 class="section-header__title t-h2">Common Questions</h2>
+      </div>
+      
+      <div class="services-list reveal">
+        <details class="faq-item">
+          <summary class="service-item" style="cursor: pointer; list-style: none;">
+            <span class="service-item__number">01</span>
+            <span class="service-item__title">How far in advance should I book?</span>
+            <span class="service-item__arrow">+</span>
+          </summary>
+          <div style="padding: 0 0 2rem 4rem; color: var(--c-text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            We recommend booking at least 2–3 months in advance for the best availability and rates, especially during peak season (December–April). However, we can accommodate last-minute requests depending on resort availability.
+          </div>
+        </details>
+        
+        <details class="faq-item">
+          <summary class="service-item" style="cursor: pointer; list-style: none;">
+            <span class="service-item__number">02</span>
+            <span class="service-item__title">Do you handle visa arrangements?</span>
+            <span class="service-item__arrow">+</span>
+          </summary>
+          <div style="padding: 0 0 2rem 4rem; color: var(--c-text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            The Maldives offers a free 30-day tourist visa on arrival for most nationalities. We provide complete guidance on entry requirements, documentation, and any specific visa needs for your nationality.
+          </div>
+        </details>
+        
+        <details class="faq-item">
+          <summary class="service-item" style="cursor: pointer; list-style: none;">
+            <span class="service-item__number">03</span>
+            <span class="service-item__title">Are airport transfers included?</span>
+            <span class="service-item__arrow">+</span>
+          </summary>
+          <div style="padding: 0 0 2rem 4rem; color: var(--c-text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            Yes! We arrange all transfers — speedboat, seaplane, or domestic flights — depending on your resort's location. Everything is coordinated seamlessly so you don't have to worry about logistics.
+          </div>
+        </details>
+        
+        <details class="faq-item">
+          <summary class="service-item" style="cursor: pointer; list-style: none;">
+            <span class="service-item__number">04</span>
+            <span class="service-item__title">Can I customize my package?</span>
+            <span class="service-item__arrow">+</span>
+          </summary>
+          <div style="padding: 0 0 2rem 4rem; color: var(--c-text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            Absolutely. Every trip we plan is fully customizable. Choose your preferred resort, room type, meal plan, activities, and special add-ons. We build the package around your preferences and budget.
+          </div>
+        </details>
+        
+        <details class="faq-item">
+          <summary class="service-item" style="cursor: pointer; list-style: none;">
+            <span class="service-item__number">05</span>
+            <span class="service-item__title">What's included in your packages?</span>
+            <span class="service-item__arrow">+</span>
+          </summary>
+          <div style="padding: 0 0 2rem 4rem; color: var(--c-text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            Our packages typically include accommodation, meal plans (based on your choice), airport transfers, and 24/7 concierge support. Activities, excursions, and flights can be added based on your preferences.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-icon">✦</span>
+            Planet Holidays
+          </a>
+          <p class="footer__brand-desc">
+            Crafting extraordinary travel experiences to the Maldives and Sri Lanka since 2014. 
+            Your trusted partner for creating lifelong memories.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Explore</h4>
+          <div class="footer__links">
+            <a href="destinations.html" class="footer__link">Destinations</a>
+            <a href="offers.html" class="footer__link">Offers</a>
+            <a href="events.html" class="footer__link">Weddings & MICE</a>
+            <a href="blog.html" class="footer__link">Travel Blog</a>
+            <a href="destinations.html#experiences" class="footer__link">Experiences</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <div class="footer__links">
+            <a href="about.html" class="footer__link">About Us</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+            <a href="#" class="footer__link">Careers</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+            <a href="#" class="footer__link">Terms of Service</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Get in Touch</h4>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">📍</span>
+            <span>Ma. Fas Eri, 7th Floor,<br>Ameenee Magu, Malé,<br>Maldives 20205</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">📞</span>
+            <a href="tel:+9607972717">+960 797 2717</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">✉</span>
+            <a href="mailto:hello@planetholidays.travel">hello@planetholidays.travel</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Planet Holidays. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="https://facebook.com/planetholidaysmv" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/planet.holidaysmv/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

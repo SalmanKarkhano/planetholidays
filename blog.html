@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Blog — Planet Holidays | Maldives & Sri Lanka Tips</title>
+  <meta name="description" content="Travel tips, destination guides, and insider knowledge for the Maldives and Sri Lanka. Your go-to resource for planning the perfect tropical getaway.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Travel Blog — Planet Holidays">
+  <meta property="og:description" content="Travel tips, destination guides, and insider knowledge for the Maldives and Sri Lanka.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=1200&q=80">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Syne:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">✦</span>
+        Planet Holidays
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="destinations.html" class="nav__link">Destinations</a>
+        <a href="offers.html" class="nav__link">Offers</a>
+        <a href="events.html" class="nav__link">Events</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="contact.html" class="nav__cta">Book a Trip</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="offers.html">Offers</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn--primary" style="margin-top: 1rem;">Book a Trip</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=1920&q=80" alt="Maldives tropical scenery">
+    </div>
+    <div class="page-hero__gradient"></div>
+    
+    <div class="container">
+      <div class="page-hero__breadcrumb reveal">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span>Blog</span>
+      </div>
+      <p class="t-caption reveal" style="margin-bottom: 1rem;">Stories · Guides · Tips</p>
+      <h1 class="t-h1 reveal">Travel <span style="color: var(--c-accent);">Journal</span></h1>
+      <p class="t-body-lg reveal" style="max-width: 560px; margin-top: 1.5rem;">
+        Insider tips, destination deep-dives, and travel inspiration 
+        from the Indian Ocean's most beautiful islands.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURED POST ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="blog-featured reveal">
+        <div class="blog-featured__img-wrap">
+          <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80" alt="Maldives honeymoon" class="blog-featured__img">
+        </div>
+        <div class="blog-featured__content">
+          <span class="blog-card__tag">Honeymoons</span>
+          <h2 class="t-h2 blog-featured__title">Planning the Perfect Maldives Honeymoon</h2>
+          <p class="t-body-lg blog-featured__excerpt">
+            Your comprehensive guide to planning an unforgettable honeymoon in the Maldives — 
+            from choosing the right resort to timing your trip perfectly.
+          </p>
+          <div class="blog-featured__meta">
+            <span class="blog-card__date">Jan 15, 2026</span>
+            <span class="blog-card__read">8 min read</span>
+          </div>
+          <a href="#" class="btn btn--ghost">
+            Read Article <span class="btn__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BLOG GRID ===================== -->
+  <section class="section section--compact" style="background: var(--c-bg-elevated);">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <p class="section-header__tag t-caption">Latest Posts</p>
+        <h2 class="section-header__title t-h2">From the Journal</h2>
+      </div>
+      
+      <div class="blog-grid reveal-stagger">
+        <article class="blog-card">
+          <div class="blog-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80" alt="Hidden beach in Maldives" class="blog-card__img">
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Destinations</span>
+              <span class="blog-card__date">Feb 3, 2026</span>
+            </div>
+            <h3 class="blog-card__title">Hidden Gems: 5 Less-Known Islands in the Maldives</h3>
+            <p class="blog-card__excerpt">
+              Beyond the usual suspects — discover untouched islands that offer 
+              authentic Maldivian experiences far from the crowds.
+            </p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read">6 min read</span>
+              <a href="#" class="blog-card__link">Read →</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <div class="blog-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Eco-friendly travel" class="blog-card__img">
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Sustainability</span>
+              <span class="blog-card__date">Jan 28, 2026</span>
+            </div>
+            <h3 class="blog-card__title">Eco-Friendly Travel: How to Visit the Maldives Responsibly</h3>
+            <p class="blog-card__excerpt">
+              The Maldives faces unique environmental challenges. Here's how to enjoy 
+              paradise while protecting it for future generations.
+            </p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read">5 min read</span>
+              <a href="#" class="blog-card__link">Read →</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <div class="blog-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&q=80" alt="Underwater dining" class="blog-card__img">
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Experiences</span>
+              <span class="blog-card__date">Jan 20, 2026</span>
+            </div>
+            <h3 class="blog-card__title">Top 7 Once-in-a-Lifetime Experiences in the Maldives</h3>
+            <p class="blog-card__excerpt">
+              Underwater restaurants, dolphin cruises, sandbank picnics — 
+              these are the moments that make a Maldives trip truly special.
+            </p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read">7 min read</span>
+              <a href="#" class="blog-card__link">Read →</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <div class="blog-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?w=600&q=80" alt="Resort pool" class="blog-card__img">
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Guides</span>
+              <span class="blog-card__date">Jan 12, 2026</span>
+            </div>
+            <h3 class="blog-card__title">Budget vs. Luxury: Finding Your Perfect Maldives Resort</h3>
+            <p class="blog-card__excerpt">
+              From guesthouses under $100/night to five-star villas — your complete 
+              guide to matching your budget with the right island experience.
+            </p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read">9 min read</span>
+              <a href="#" class="blog-card__link">Read →</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <div class="blog-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1540202404-a2f29016b523?w=600&q=80" alt="Sri Lanka temple" class="blog-card__img">
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Sri Lanka</span>
+              <span class="blog-card__date">Jan 5, 2026</span>
+            </div>
+            <h3 class="blog-card__title">Maldives + Sri Lanka: The Ultimate Dual-Destination Trip</h3>
+            <p class="blog-card__excerpt">
+              Combine pristine beaches with cultural immersion. How to plan 
+              the perfect split itinerary across both island nations.
+            </p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read">10 min read</span>
+              <a href="#" class="blog-card__link">Read →</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <div class="blog-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1559628233-100c798642d4?w=600&q=80" alt="Maldivian food" class="blog-card__img">
+          </div>
+          <div class="blog-card__body">
+            <div class="blog-card__meta">
+              <span class="blog-card__tag">Culture</span>
+              <span class="blog-card__date">Dec 29, 2025</span>
+            </div>
+            <h3 class="blog-card__title">A Food Lover's Guide to Local Maldivian Cuisine</h3>
+            <p class="blog-card__excerpt">
+              Mas huni, garudhiya, and beyond — discover the rich culinary 
+              traditions of the Maldives and where to find the best authentic meals.
+            </p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read">6 min read</span>
+              <a href="#" class="blog-card__link">Read →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section class="section section--compact">
+    <div class="container">
+      <div class="newsletter-block reveal">
+        <div class="newsletter-block__content">
+          <p class="t-caption">Stay Inspired</p>
+          <h2 class="t-h2">Get Travel Tips<br>in Your Inbox</h2>
+          <p class="t-body">
+            Join 3,000+ travelers who receive our weekly newsletter with exclusive 
+            deals, destination guides, and insider tips.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('.btn').textContent = 'Subscribed ✓';">
+            <input type="email" class="newsletter-form__input" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn--primary btn--sm">Subscribe</button>
+          </form>
+          <p class="newsletter-form__note">No spam, ever. Unsubscribe at any time.</p>
+        </div>
+        <div class="newsletter-block__art">
+          <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=500&q=80" alt="Tropical inbox">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-icon">✦</span>
+            Planet Holidays
+          </a>
+          <p class="footer__brand-desc">
+            Crafting extraordinary travel experiences to the Maldives and Sri Lanka since 2014. 
+            Your trusted partner for creating lifelong memories.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Explore</h4>
+          <div class="footer__links">
+            <a href="destinations.html" class="footer__link">Destinations</a>
+            <a href="offers.html" class="footer__link">Offers</a>
+            <a href="events.html" class="footer__link">Weddings & MICE</a>
+            <a href="blog.html" class="footer__link">Travel Blog</a>
+            <a href="destinations.html#experiences" class="footer__link">Experiences</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <div class="footer__links">
+            <a href="about.html" class="footer__link">About Us</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+            <a href="#" class="footer__link">Careers</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+            <a href="#" class="footer__link">Terms of Service</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Get in Touch</h4>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">📍</span>
+            <span>Ma. Fas Eri, 7th Floor,<br>Ameenee Magu, Malé,<br>Maldives 20205</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">📞</span>
+            <a href="tel:+9607972717">+960 797 2717</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">✉</span>
+            <a href="mailto:hello@planetholidays.travel">hello@planetholidays.travel</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Planet Holidays. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="https://facebook.com/planetholidaysmv" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/planet.holidaysmv/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

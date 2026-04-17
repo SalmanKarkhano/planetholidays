@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations — Planet Holidays</title>
+  <meta name="description" content="Explore luxury Maldives resorts and Sri Lanka destinations. Bandos, Olhuveli, Hudhuran Fushi, Kandooma and more — hand-picked by Planet Holidays.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Destinations — Planet Holidays">
+  <meta property="og:description" content="Explore luxury Maldives resorts and Sri Lanka destinations hand-picked by Planet Holidays.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Syne:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">✦</span>
+        Planet Holidays
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="destinations.html" class="nav__link is-active">Destinations</a>
+        <a href="offers.html" class="nav__link">Offers</a>
+        <a href="events.html" class="nav__link">Events</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="contact.html" class="nav__cta">Book a Trip</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="offers.html">Offers</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn--primary" style="margin-top: 1rem;">Book a Trip</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1920&q=80" alt="Maldives overwater bungalows at sunset">
+    </div>
+    <div class="page-hero__gradient"></div>
+    
+    <div class="container">
+      <div class="page-hero__breadcrumb reveal">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span>Destinations</span>
+      </div>
+      <p class="t-caption reveal" style="margin-bottom: 1rem;">Explore the Indian Ocean</p>
+      <h1 class="t-h1 reveal">Destinations That<br><span style="color: var(--c-accent);">Take Your Breath Away</span></h1>
+      <p class="t-body-lg reveal" style="max-width: 550px; margin-top: 1.5rem;">
+        From the turquoise lagoons of the Maldives to the lush highlands of Sri Lanka — 
+        discover our curated collection of extraordinary places.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== MALDIVES RESORTS ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-header__tag t-caption">Maldives Collection</p>
+        <h2 class="section-header__title t-h2">Premium Resort Partners</h2>
+        <p class="section-header__desc t-body-lg">
+          Each resort is hand-selected for its exceptional quality, service, and unique character.
+        </p>
+      </div>
+      
+      <!-- Maldives Facts Bar -->
+      <div class="facts-bar reveal" style="margin-bottom: clamp(3rem, 6vw, 5rem);">
+        <div class="fact-item">
+          <div class="fact-item__icon">🏝</div>
+          <div class="fact-item__value">1,192</div>
+          <div class="fact-item__label">Islands</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-item__icon">🏛</div>
+          <div class="fact-item__value">Malé</div>
+          <div class="fact-item__label">Capital</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-item__icon">💰</div>
+          <div class="fact-item__value">MVR</div>
+          <div class="fact-item__label">Currency</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-item__icon">🗣</div>
+          <div class="fact-item__value">Dhivehi</div>
+          <div class="fact-item__label">Language</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-item__icon">🌡</div>
+          <div class="fact-item__value">28°C</div>
+          <div class="fact-item__label">Avg. Temp</div>
+        </div>
+      </div>
+
+      <div class="dest-full-grid">
+        <!-- Bandos Maldives -->
+        <div class="dest-full-card reveal">
+          <img class="dest-full-card__img" src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" alt="Bandos Maldives">
+          <div class="dest-full-card__overlay"></div>
+          <div class="dest-full-card__content">
+            <span class="dest-full-card__tag">All-Inclusive</span>
+            <h3 class="dest-full-card__name">Bandos Maldives</h3>
+            <div class="dest-full-card__meta">
+              <span>📍 North Malé Atoll</span>
+              <span>★ 4.8</span>
+              <span>From $280/night</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Olhuveli -->
+        <div class="dest-full-card reveal">
+          <img class="dest-full-card__img" src="https://images.unsplash.com/photo-1540202404-a2f29016b523?w=800&q=80" alt="Olhuveli Beach & Spa">
+          <div class="dest-full-card__overlay"></div>
+          <div class="dest-full-card__content">
+            <span class="dest-full-card__tag">Luxury Resort</span>
+            <h3 class="dest-full-card__name">Olhuveli Beach & Spa</h3>
+            <div class="dest-full-card__meta">
+              <span>📍 South Malé Atoll</span>
+              <span>★ 4.9</span>
+              <span>From $350/night</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hudhuran Fushi -->
+        <div class="dest-full-card reveal">
+          <img class="dest-full-card__img" src="https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?w=800&q=80" alt="Hudhuran Fushi">
+          <div class="dest-full-card__overlay"></div>
+          <div class="dest-full-card__content">
+            <span class="dest-full-card__tag">Surf & Sun</span>
+            <h3 class="dest-full-card__name">Adaaran Select Hudhuran Fushi</h3>
+            <div class="dest-full-card__meta">
+              <span>📍 North Malé Atoll</span>
+              <span>★ 4.7</span>
+              <span>From $310/night</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Holiday Inn Kandooma -->
+        <div class="dest-full-card reveal">
+          <img class="dest-full-card__img" src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80" alt="Holiday Inn Kandooma">
+          <div class="dest-full-card__overlay"></div>
+          <div class="dest-full-card__content">
+            <span class="dest-full-card__tag">Family Friendly</span>
+            <h3 class="dest-full-card__name">Holiday Inn Resort Kandooma</h3>
+            <div class="dest-full-card__meta">
+              <span>📍 South Malé Atoll</span>
+              <span>★ 4.6</span>
+              <span>From $220/night</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Malahini Kuda Bandos -->
+        <div class="dest-full-card reveal">
+          <img class="dest-full-card__img" src="https://images.unsplash.com/photo-1578922746465-3a80a228f223?w=800&q=80" alt="Malahini Kuda Bandos">
+          <div class="dest-full-card__overlay"></div>
+          <div class="dest-full-card__content">
+            <span class="dest-full-card__tag">Boutique</span>
+            <h3 class="dest-full-card__name">Malahini Kuda Bandos</h3>
+            <div class="dest-full-card__meta">
+              <span>📍 North Malé Atoll</span>
+              <span>★ 4.5</span>
+              <span>From $190/night</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Rannalhi -->
+        <div class="dest-full-card reveal">
+          <img class="dest-full-card__img" src="https://images.unsplash.com/photo-1559628233-100c798642d4?w=800&q=80" alt="Adaaran Club Rannalhi">
+          <div class="dest-full-card__overlay"></div>
+          <div class="dest-full-card__content">
+            <span class="dest-full-card__tag">Romantic Escape</span>
+            <h3 class="dest-full-card__name">Adaaran Club Rannalhi</h3>
+            <div class="dest-full-card__meta">
+              <span>📍 South Malé Atoll</span>
+              <span>★ 4.6</span>
+              <span>From $250/night</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SRI LANKA ===================== -->
+  <section class="section section--compact" style="background: var(--c-bg-elevated);">
+    <div class="container">
+      <div class="split split--reverse">
+        <div class="split__text">
+          <p class="t-caption reveal">New Destination</p>
+          <h2 class="t-h2 reveal">Discover<br>Sri Lanka</h2>
+          <p class="t-body-lg reveal">
+            Beyond the Maldives, explore the cultural richness of Sri Lanka — 
+            ancient temples, misty tea plantations, wild safari encounters, 
+            and pristine southern beaches.
+          </p>
+          <p class="t-body reveal">
+            Our Sri Lankan itineraries blend heritage exploration with luxury stays, 
+            creating journeys that are as culturally enriching as they are relaxing. 
+            From the ancient ruins of Sigiriya to the surf breaks of Arugam Bay — 
+            we've got you covered.
+          </p>
+          <div class="reveal">
+            <a href="contact.html" class="btn btn--primary">
+              Inquire About Sri Lanka <span class="btn__arrow">→</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="split__media reveal">
+          <div class="split__img parallax-img">
+            <img src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=900&q=80" alt="Sri Lanka tea plantation">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCES ===================== -->
+  <section class="section horizontal-section" id="experiences">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-header__tag t-caption">Things to Do</p>
+        <h2 class="section-header__title t-h2">Curated Experiences</h2>
+        <p class="section-header__desc t-body-lg">
+          Every destination comes alive through its experiences. Here are our favorites.
+        </p>
+      </div>
+    </div>
+    
+    <div class="horizontal-track reveal-stagger">
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Scuba Diving">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Adventure</p>
+          <h3 class="experience-card__title">Scuba Diving at Maaya Thila</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=600&q=80" alt="Sunset Cruise">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Romance</p>
+          <h3 class="experience-card__title">Sunset Dolphin Cruise</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80" alt="Spa Wellness">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Wellness</p>
+          <h3 class="experience-card__title">Overwater Spa Retreat</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&q=80" alt="Fine Dining">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Dining</p>
+          <h3 class="experience-card__title">Underwater Restaurant Experience</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Island Hopping">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Exploration</p>
+          <h3 class="experience-card__title">Private Island Hopping</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1468413253725-0d5181091126?w=600&q=80" alt="Paddle Boarding">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Water Sports</p>
+          <h3 class="experience-card__title">Stand-Up Paddle Boarding</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Glowing Beach">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Natural Wonder</p>
+          <h3 class="experience-card__title">Vaadhoo Glowing Beach Visit</h3>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <img class="experience-card__img" src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&q=80" alt="Malé City Tour">
+        <div class="experience-card__content">
+          <p class="experience-card__tag">Culture</p>
+          <h3 class="experience-card__title">Explore Capital Island Malé</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section section--compact">
+    <div class="cta-section reveal">
+      <div class="cta-section__bg">
+        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1600&q=80" alt="Maldives overwater villa">
+      </div>
+      <div class="cta-section__overlay"></div>
+      
+      <p class="t-caption" style="margin-bottom: 1rem;">Can't Decide?</p>
+      <h2 class="cta-section__title t-h1">Let Us Build Your<br>Perfect Itinerary</h2>
+      <p class="cta-section__desc t-body-lg">
+        Tell us your dates, budget, and dream activities. We'll handle the rest.
+      </p>
+      <a href="contact.html" class="btn btn--primary">
+        Customize My Trip <span class="btn__arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-icon">✦</span>
+            Planet Holidays
+          </a>
+          <p class="footer__brand-desc">
+            Crafting extraordinary travel experiences to the Maldives and Sri Lanka since 2014. 
+            Your trusted partner for creating lifelong memories.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Explore</h4>
+          <div class="footer__links">
+            <a href="destinations.html" class="footer__link">Destinations</a>
+            <a href="offers.html" class="footer__link">Offers</a>
+            <a href="events.html" class="footer__link">Weddings & MICE</a>
+            <a href="blog.html" class="footer__link">Travel Blog</a>
+            <a href="destinations.html#experiences" class="footer__link">Experiences</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <div class="footer__links">
+            <a href="about.html" class="footer__link">About Us</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+            <a href="#" class="footer__link">Careers</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+            <a href="#" class="footer__link">Terms of Service</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Get in Touch</h4>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">📍</span>
+            <span>Ma. Fas Eri, 7th Floor,<br>Ameenee Magu, Malé,<br>Maldives 20205</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">📞</span>
+            <a href="tel:+9607972717">+960 797 2717</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon">✉</span>
+            <a href="mailto:hello@planetholidays.travel">hello@planetholidays.travel</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Planet Holidays. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="https://facebook.com/planetholidaysmv" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/planet.holidaysmv/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
