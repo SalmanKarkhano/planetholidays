@@ -465,33 +465,8 @@
   // PRELOADER WITH % COUNTER
   // ============================================
   function initPreloader() {
-    var preloader = document.createElement('div');
-    preloader.className = 'preloader';
-    preloader.innerHTML = [
-      '<div class="preloader__content">',
-      '  <div class="preloader__counter-wrap">',
-      '    <span class="preloader__counter">0</span>',
-      '    <span class="preloader__percent">%</span>',
-      '  </div>',
-      '  <span class="preloader__text">Planet Holidays</span>',
-      '  <div class="preloader__bar"><div class="preloader__bar-fill"></div></div>',
-      '</div>'
-    ].join('');
-    document.body.appendChild(preloader);
-
-    var style = document.createElement('style');
-    style.textContent = [
-      '.preloader { position: fixed; inset: 0; z-index: 100000; background: #0a0a0a; display: flex; align-items: center; justify-content: center; }',
-      '.preloader__content { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }',
-      '.preloader__counter-wrap { display: flex; align-items: baseline; font-family: "Syne", sans-serif; font-weight: 800; color: #f5f0eb; }',
-      '.preloader__counter { font-size: clamp(3rem, 10vw, 6rem); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }',
-      '.preloader__percent { font-size: clamp(1rem, 3vw, 1.5rem); color: #c8a97e; margin-left: 0.15em; }',
-      '.preloader__text { font-family: "Inter", sans-serif; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,235,0.4); }',
-      '.preloader__bar { width: 120px; height: 1px; background: rgba(245,240,235,0.1); margin-top: 0.5rem; overflow: hidden; }',
-      '.preloader__bar-fill { height: 100%; width: 0%; background: #c8a97e; transition: width 0.1s linear; }',
-      '.preloader.is-done { opacity: 0; visibility: hidden; transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), visibility 0.8s; }'
-    ].join('\n');
-    document.head.appendChild(style);
+    var preloader = document.getElementById('preloader');
+    if (!preloader) return;
 
     var counterEl = preloader.querySelector('.preloader__counter');
     var barFill = preloader.querySelector('.preloader__bar-fill');
