@@ -9,6 +9,33 @@
   'use strict';
 
   // ============================================
+  // UNIFIED SCROLL HANDLER (consolidates all scroll listeners)
+  // ============================================
+  var scrollCallbacks = [];
+  var scrollTicking = false;
+
+  function onScroll() {
+    if (!scrollTicking) {
+      requestAnimationFrame(function () {
+        var scrollY = window.scrollY;
+        var windowHeight = window.innerHeight;
+        var docHeight = document.documentElement.scrollHeight;
+        for (var i = 0; i < scrollCallbacks.length; i++) {
+          scrollCallbacks[i](scrollY, windowHeight, docHeight);
+        }
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }
+
+  function addScrollListener(fn) {
+    scrollCallbacks.push(fn);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ============================================
   // LENIS SMOOTH SCROLL
   // ============================================
   var lenis;
@@ -31,24 +58,21 @@
   // ============================================
   // NAVIGATION
   // ============================================
-  const nav = document.getElementById('nav');
-  const navToggle = document.getElementById('navToggle');
-  const navMobile = document.getElementById('navMobile');
+  var nav = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  var navMobile = document.getElementById('navMobile');
 
-  // Scroll detection for nav background
-  let lastScroll = 0;
-  function handleNavScroll() {
-    const scrollY = window.scrollY;
-    if (scrollY > 80) {
-      nav.classList.add('is-scrolled');
-    } else {
-      nav.classList.remove('is-scrolled');
-    }
-    lastScroll = scrollY;
+  // Nav scroll detection — via unified handler
+  if (nav) {
+    addScrollListener(function (scrollY) {
+      if (scrollY > 80) {
+        nav.classList.add('is-scrolled');
+      } else {
+        nav.classList.remove('is-scrolled');
+      }
+    });
+    if (window.scrollY > 80) nav.classList.add('is-scrolled');
   }
-
-  window.addEventListener('scroll', handleNavScroll, { passive: true });
-  handleNavScroll();
 
   // Mobile toggle
   if (navToggle && navMobile) {
@@ -58,7 +82,6 @@
       document.body.style.overflow = navMobile.classList.contains('is-open') ? 'hidden' : '';
     });
 
-    // Close mobile menu on link click
     navMobile.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navToggle.classList.remove('is-active');
@@ -101,12 +124,10 @@
   function initHeroAnimation() {
     var heroTitle = document.querySelector('[data-split-chars]');
     if (heroTitle) {
-      // Split each reveal-word into individual characters
       var words = heroTitle.querySelectorAll('.reveal-word');
       var charIndex = 0;
       words.forEach(function (word) {
         var text = word.textContent;
-        var parentColor = word.parentElement.style.color || '';
         word.textContent = '';
         word.style.opacity = '1';
         word.style.transform = 'none';
@@ -121,7 +142,6 @@
         }
       });
 
-      // Trigger animation
       setTimeout(function () {
         var chars = heroTitle.querySelectorAll('.hero-char');
         chars.forEach(function (c) {
@@ -130,7 +150,6 @@
         });
       }, 200);
     } else {
-      // Fallback: word-level animation
       var wordEls = document.querySelectorAll('.reveal-word');
       if (!wordEls.length) return;
       wordEls.forEach(function (word, i) {
@@ -149,17 +168,15 @@
   }
 
   // ============================================
-  // PARALLAX EFFECT ON IMAGES
+  // PARALLAX EFFECT ON IMAGES (via unified handler)
   // ============================================
   function initParallax() {
     var parallaxImages = document.querySelectorAll('.parallax-img img');
     if (!parallaxImages.length) return;
 
-    function updateParallax() {
+    function updateParallax(scrollY, windowHeight) {
       parallaxImages.forEach(function (img) {
         var rect = img.parentElement.getBoundingClientRect();
-        var windowHeight = window.innerHeight;
-
         if (rect.top < windowHeight && rect.bottom > 0) {
           var scrollPercent = (windowHeight - rect.top) / (windowHeight + rect.height);
           var translateY = (scrollPercent - 0.5) * -40;
@@ -168,17 +185,17 @@
       });
     }
 
-    window.addEventListener('scroll', updateParallax, { passive: true });
-    updateParallax();
+    addScrollListener(updateParallax);
+    updateParallax(window.scrollY, window.innerHeight);
   }
 
   // ============================================
-  // SCROLL-HIJACKED HORIZONTAL SECTION
+  // SCROLL-HIJACKED HORIZONTAL SECTION (via unified handler)
   // ============================================
   function initHorizontalScroll() {
     var section = document.querySelector('[data-horizontal-scroll]');
     if (!section) return;
-    // Only activate on desktop
+
     if (window.innerWidth < 768) {
       var track = section.querySelector('.horizontal-track');
       if (track) {
@@ -194,12 +211,11 @@
     var cards = track.querySelectorAll('.experience-card');
     var totalCards = cards.length;
     var cardWidth = cards[0] ? cards[0].offsetWidth : 400;
-    var gap = 32; // 2rem
+    var gap = 32;
     var trackWidth = (cardWidth + gap) * totalCards - gap;
     var viewportWidth = window.innerWidth;
     var scrollDistance = trackWidth - viewportWidth + 100;
 
-    // Set the section height to create scroll room
     section.style.height = scrollDistance + viewportWidth + 'px';
     section.style.padding = '0';
     section.style.overflow = 'visible';
@@ -215,16 +231,15 @@
       sticky.style.overflow = 'hidden';
     }
 
-    function updateHorizontal() {
+    addScrollListener(function () {
       var rect = section.getBoundingClientRect();
       var sectionTop = -rect.top;
       var maxScroll = section.offsetHeight - window.innerHeight;
       var progress = Math.max(0, Math.min(1, sectionTop / maxScroll));
       var translateX = -progress * scrollDistance;
       track.style.transform = 'translateX(' + translateX + 'px)';
-    }
+    });
 
-    window.addEventListener('scroll', updateHorizontal, { passive: true });
     window.addEventListener('resize', function () {
       cardWidth = cards[0] ? cards[0].offsetWidth : 400;
       trackWidth = (cardWidth + gap) * totalCards - gap;
@@ -232,7 +247,6 @@
       scrollDistance = trackWidth - viewportWidth + 100;
       section.style.height = scrollDistance + viewportWidth + 'px';
     });
-    updateHorizontal();
   }
 
   // ============================================
@@ -264,17 +278,16 @@
     var text = el.textContent;
     var suffix = text.replace(/[\d,]/g, '');
     var duration = 2000;
-    var start = 0;
     var startTime = null;
 
     function step(timestamp) {
       if (!startTime) startTime = timestamp;
       var progress = Math.min((timestamp - startTime) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
       var current = Math.floor(eased * target);
 
       if (current >= 1000) {
-        el.textContent = (current / 1000).toFixed(current >= 10000 ? 0 : 0) + 'K' + suffix.replace('K', '').replace('+', '+');
+        el.textContent = (current / 1000).toFixed(0) + 'K' + suffix.replace('K', '').replace('+', '+');
       } else {
         el.textContent = current + suffix;
       }
@@ -282,7 +295,7 @@
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
-        el.textContent = text; // Restore original text
+        el.textContent = text;
       }
     }
 
@@ -298,12 +311,11 @@
 
     faqItems.forEach(function (item) {
       var summary = item.querySelector('summary');
-      var arrow = summary.querySelector('.service-item__arrow');
+      var arrow = summary ? summary.querySelector('.service-item__arrow') : null;
 
       item.addEventListener('toggle', function () {
         if (item.open) {
-          if (arrow) arrow.textContent = '−';
-          // Close others
+          if (arrow) arrow.textContent = '\u2212';
           faqItems.forEach(function (other) {
             if (other !== item && other.open) {
               other.open = false;
@@ -317,7 +329,7 @@
   }
 
   // ============================================
-  // CONTACT FORM (Client-side feedback)
+  // CONTACT FORM (opens mail client as fallback)
   // ============================================
   function initContactForm() {
     var form = document.getElementById('contactForm');
@@ -329,21 +341,29 @@
       var btn = form.querySelector('button[type="submit"]');
       var originalText = btn.innerHTML;
 
-      btn.innerHTML = 'Sending... ✦';
+      var firstName = (form.querySelector('#firstName') || {}).value || '';
+      var lastName = (form.querySelector('#lastName') || {}).value || '';
+      var email = (form.querySelector('#email') || {}).value || '';
+      var destination = (form.querySelector('#destination') || {}).value || '';
+      var message = (form.querySelector('#message') || {}).value || '';
+
+      var subject = encodeURIComponent('Trip Inquiry from ' + firstName + ' ' + lastName);
+      var body = encodeURIComponent(
+        'Name: ' + firstName + ' ' + lastName + '\n' +
+        'Email: ' + email + '\n' +
+        'Destination: ' + destination + '\n\n' +
+        message
+      );
+
+      window.location.href = 'mailto:hello@planetholidays.travel?subject=' + subject + '&body=' + body;
+
+      btn.innerHTML = 'Opening Email Client... \u2726';
       btn.disabled = true;
 
-      // Simulate submission (replace with actual endpoint)
       setTimeout(function () {
-        btn.innerHTML = 'Sent Successfully! ✓';
-        btn.style.background = '#2d8a9e';
-
-        setTimeout(function () {
-          btn.innerHTML = originalText;
-          btn.disabled = false;
-          btn.style.background = '';
-          form.reset();
-        }, 3000);
-      }, 1500);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 3000);
     });
   }
 
@@ -389,6 +409,7 @@
 
   // ============================================
   // CUSTOM CURSOR WITH TEXT ON HOVER
+  // (idle-aware rAF loop, native cursor as fallback)
   // ============================================
   function initCustomCursor() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -408,28 +429,49 @@
       '.custom-cursor.is-card-hover .custom-cursor__dot { opacity: 0; }',
       '.custom-cursor.is-card-hover .custom-cursor__ring { width: 90px; height: 90px; border-color: rgba(200,169,126,0.9); background: rgba(200,169,126,0.15); }',
       '.custom-cursor.is-card-hover .custom-cursor__text { opacity: 1; }',
-      'body { cursor: none !important; }',
-      'a, button, .dest-card, .experience-card, .service-item, .value-card, .dest-full-card, .offer-card, .mice-card, .blog-card { cursor: none !important; }'
+      'body.has-custom-cursor { cursor: none; }',
+      'body.has-custom-cursor a, body.has-custom-cursor button, body.has-custom-cursor .dest-card, body.has-custom-cursor .experience-card, body.has-custom-cursor .service-item, body.has-custom-cursor .value-card, body.has-custom-cursor .dest-full-card, body.has-custom-cursor .offer-card, body.has-custom-cursor .mice-card, body.has-custom-cursor .blog-card { cursor: none; }'
     ].join('\n');
     document.head.appendChild(style);
 
     var mouseX = 0, mouseY = 0;
     var cursorX = 0, cursorY = 0;
+    var cursorRafId = null;
+    var mouseActive = false;
+    var idleTimer = null;
 
     document.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
+      if (!mouseActive) {
+        mouseActive = true;
+        document.body.classList.add('has-custom-cursor');
+        startCursorLoop();
+      }
+
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () { mouseActive = false; }, 3000);
     });
 
-    function updateCursor() {
-      cursorX += (mouseX - cursorX) * 0.12;
-      cursorY += (mouseY - cursorY) * 0.12;
-      cursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px)';
-      requestAnimationFrame(updateCursor);
-    }
-    updateCursor();
+    function startCursorLoop() {
+      if (cursorRafId) return;
+      function tick() {
+        var dx = mouseX - cursorX;
+        var dy = mouseY - cursorY;
+        cursorX += dx * 0.12;
+        cursorY += dy * 0.12;
+        cursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px)';
 
-    // Text cursor on cards
+        if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1 && !mouseActive) {
+          cursorRafId = null;
+          return;
+        }
+        cursorRafId = requestAnimationFrame(tick);
+      }
+      cursorRafId = requestAnimationFrame(tick);
+    }
+
     var cardTargets = document.querySelectorAll('.dest-card, .experience-card, .dest-full-card, .offer-card, .mice-card, .blog-card');
     var cursorText = cursor.querySelector('.custom-cursor__text');
     cardTargets.forEach(function (el) {
@@ -447,7 +489,6 @@
       });
     });
 
-    // Regular hover on links/buttons
     var hoverTargets = document.querySelectorAll('a:not(.dest-card):not(.blog-card__link), button, .service-item, .value-card');
     hoverTargets.forEach(function (el) {
       el.addEventListener('mouseenter', function () {
@@ -462,7 +503,7 @@
   }
 
   // ============================================
-  // PRELOADER WITH % COUNTER
+  // PRELOADER — fast, dismisses on load
   // ============================================
   function initPreloader() {
     var preloader = document.getElementById('preloader');
@@ -473,12 +514,10 @@
     var current = { value: 0 };
     var target = 0;
 
-    // Simulate loading stages
     var stages = [
-      { delay: 100, to: 25 },
-      { delay: 400, to: 55 },
-      { delay: 800, to: 78 },
-      { delay: 1200, to: 92 }
+      { delay: 50, to: 30 },
+      { delay: 150, to: 60 },
+      { delay: 300, to: 85 }
     ];
 
     stages.forEach(function (s) {
@@ -487,7 +526,7 @@
 
     function animateCounter() {
       if (current.value < target) {
-        current.value += Math.ceil((target - current.value) * 0.12) || 1;
+        current.value += Math.ceil((target - current.value) * 0.2) || 1;
         if (current.value > target) current.value = target;
       }
       counterEl.textContent = current.value;
@@ -500,20 +539,18 @@
 
     window.addEventListener('load', function () {
       target = 100;
+      current.value = 100;
+      counterEl.textContent = '100';
+      barFill.style.width = '100%';
       setTimeout(function () {
-        current.value = 100;
-        counterEl.textContent = '100';
-        barFill.style.width = '100%';
-        setTimeout(function () {
-          preloader.classList.add('is-done');
-          setTimeout(function () { preloader.remove(); }, 800);
-        }, 400);
-      }, 300);
+        preloader.classList.add('is-done');
+        setTimeout(function () { preloader.remove(); }, 600);
+      }, 100);
     });
   }
 
   // ============================================
-  // TESTIMONIAL CAROUSEL
+  // TESTIMONIAL CAROUSEL (with touch/swipe)
   // ============================================
   function initTestimonialCarousel() {
     var carousels = document.querySelectorAll('.testimonial-carousel');
@@ -540,18 +577,31 @@
       function next() { goTo(current + 1); }
       function prev() { goTo(current - 1); }
 
-      function startAuto() {
-        interval = setInterval(next, 5000);
-      }
-      function stopAuto() {
-        clearInterval(interval);
-      }
+      function startAuto() { interval = setInterval(next, 5000); }
+      function stopAuto() { clearInterval(interval); }
 
       if (nextBtn) nextBtn.addEventListener('click', function () { stopAuto(); next(); startAuto(); });
       if (prevBtn) prevBtn.addEventListener('click', function () { stopAuto(); prev(); startAuto(); });
       dots.forEach(function (dot, i) {
         dot.addEventListener('click', function () { stopAuto(); goTo(i); startAuto(); });
       });
+
+      // Touch/swipe support
+      var touchStartX = 0;
+      var touchThreshold = 50;
+
+      track.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAuto();
+      }, { passive: true });
+
+      track.addEventListener('touchend', function (e) {
+        var diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > touchThreshold) {
+          if (diff > 0) { next(); } else { prev(); }
+        }
+        startAuto();
+      }, { passive: true });
 
       goTo(0);
       startAuto();
@@ -571,44 +621,37 @@
   }
 
   // ============================================
-  // SCROLL PROGRESS BAR
+  // SCROLL PROGRESS BAR (via unified handler)
   // ============================================
   function initScrollProgress() {
     var bar = document.createElement('div');
     bar.className = 'scroll-progress';
     document.body.appendChild(bar);
 
-    function update() {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    addScrollListener(function (scrollY, windowHeight, docHeight) {
+      var max = docHeight - windowHeight;
+      var progress = max > 0 ? (scrollY / max) * 100 : 0;
       bar.style.width = progress + '%';
-    }
-
-    window.addEventListener('scroll', update, { passive: true });
-    update();
+    });
   }
 
   // ============================================
-  // BACK TO TOP BUTTON
+  // BACK TO TOP BUTTON (via unified handler)
   // ============================================
   function initBackToTop() {
     var btn = document.createElement('button');
     btn.className = 'back-to-top';
-    btn.innerHTML = '↑';
+    btn.innerHTML = '\u2191';
     btn.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(btn);
 
-    function toggle() {
-      if (window.scrollY > 600) {
+    addScrollListener(function (scrollY) {
+      if (scrollY > 600) {
         btn.classList.add('is-visible');
       } else {
         btn.classList.remove('is-visible');
       }
-    }
-
-    window.addEventListener('scroll', toggle, { passive: true });
-    toggle();
+    });
 
     btn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -668,7 +711,6 @@
   // CLIP-PATH IMAGE REVEALS
   // ============================================
   function initClipReveals() {
-    // Clip-path reveals on standalone images (not inside cards — cards use .reveal)
     var wrappers = document.querySelectorAll('.split__img, .about-hero__media');
     if (!wrappers.length) return;
 
@@ -713,25 +755,17 @@
   }
 
   // ============================================
-  // FOOTER CURTAIN REVEAL
+  // FOOTER CURTAIN REVEAL (uses <main> element)
   // ============================================
   function initFooterReveal() {
     var wrap = document.querySelector('.footer-reveal-wrap');
     if (!wrap) return;
 
-    var style = document.createElement('style');
-    style.textContent = [
-      '.footer-reveal-wrap { position: relative; z-index: 1; }',
-      '.footer-reveal-wrap .footer { position: sticky; bottom: 0; z-index: -1; }'
-    ].join('\n');
-    document.head.appendChild(style);
-
-    // Give main content a background so it covers footer while scrolling
-    var main = document.querySelector('main') || document.querySelector('.hero');
-    if (main && !main.closest('.footer-reveal-wrap')) {
+    var main = document.querySelector('main');
+    if (main) {
       main.style.position = 'relative';
       main.style.zIndex = '2';
-      main.style.background = '#0a0a0a';
+      main.style.background = 'var(--c-bg, #0a0a0a)';
     }
   }
 
@@ -761,5 +795,8 @@
     initClipReveals();
     initFloatingDecor();
     initFooterReveal();
+
+    // Fire initial scroll to populate all unified handlers
+    onScroll();
   });
 })();

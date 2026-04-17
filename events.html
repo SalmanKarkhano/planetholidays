@@ -18,18 +18,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Syne:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
-<!-- Preloader: inline critical CSS for instant render -->
-<style>
-.preloader{position:fixed;inset:0;z-index:100000;background:#0a0a0a;display:flex;align-items:center;justify-content:center}
-.preloader__content{display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.preloader__counter-wrap{display:flex;align-items:baseline;font-family:"Syne",sans-serif;font-weight:800;color:#f5f0eb}
-.preloader__counter{font-size:clamp(3rem,10vw,6rem);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.preloader__percent{font-size:clamp(1rem,3vw,1.5rem);color:#c8a97e;margin-left:.15em}
-.preloader__text{font-family:"Inter",sans-serif;font-weight:400;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.4)}
-.preloader__bar{width:120px;height:1px;background:rgba(245,240,235,.1);margin-top:.5rem;overflow:hidden}
-.preloader__bar-fill{height:100%;width:0%;background:#c8a97e;transition:width .1s linear}
-.preloader.is-done{opacity:0;visibility:hidden;transition:opacity .8s cubic-bezier(.16,1,.3,1),visibility .8s}
-</style>
+<!-- Preload hero image -->
+  <link rel="preload" as="image" href="images/1590523741831-ab7e8b8f9c7f-hero.webp" fetchpriority="high">
 </head>
 <body>
 
@@ -58,6 +48,7 @@
         <a href="destinations.html" class="nav__link">Destinations</a>
         <a href="offers.html" class="nav__link">Offers</a>
         <a href="events.html" class="nav__link is-active">Events</a>
+        <a href="blog.html" class="nav__link">Blog</a>
         <a href="contact.html" class="nav__link">Contact</a>
         <a href="contact.html" class="nav__cta">Book a Trip</a>
       </div>
@@ -74,14 +65,17 @@
     <a href="destinations.html">Destinations</a>
     <a href="offers.html">Offers</a>
     <a href="events.html">Events</a>
+    <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html" class="btn btn--primary" style="margin-top: 1rem;">Book a Trip</a>
   </div>
 
+  <main>
+
   <!-- ===================== PAGE HERO ===================== -->
   <section class="page-hero">
     <div class="page-hero__bg">
-      <img loading="lazy" src="images/1590523741831-ab7e8b8f9c7f-hero.webp" alt="Maldives wedding venue">
+      <img loading="eager" src="images/1590523741831-ab7e8b8f9c7f-hero.webp" alt="Maldives wedding venue">
     </div>
     <div class="page-hero__gradient"></div>
     
@@ -319,6 +313,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
@@ -380,7 +376,7 @@
   </footer>
 
   <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/lenis.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

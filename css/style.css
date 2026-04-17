@@ -100,16 +100,17 @@ body {
   position: relative;
 }
 
-/* Film grain overlay */
+/* Film grain overlay — reduced z-index, GPU-friendly */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 9998;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
   background-repeat: repeat;
   opacity: var(--grain-opacity);
+  contain: strict;
 }
 
 /* Selection */
@@ -313,7 +314,6 @@ ul, ol {
   width: 100%;
   height: 120%;
   object-fit: cover;
-  will-change: transform;
 }
 
 /* ============================================
@@ -2500,7 +2500,6 @@ ul, ol {
 .horizontal-track {
   display: flex;
   gap: 2rem;
-  will-change: transform;
 }
 
 @media (max-width: 767px) {
@@ -2527,17 +2526,6 @@ ul, ol {
   }
 }
 
-/* --- 3D Tilt cards --- */
-[data-tilt] {
-  will-change: transform;
-}
-
-/* --- Magnetic buttons --- */
-.btn,
-.nav__cta {
-  will-change: transform;
-}
-
 /* --- Footer curtain reveal --- */
 .footer-reveal-wrap {
   position: relative;
@@ -2548,6 +2536,98 @@ ul, ol {
   position: sticky;
   bottom: 0;
   z-index: -1;
+}
+
+/* ============================================
+   PRELOADER (moved from inline <style>)
+   ============================================ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preloader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.preloader__counter-wrap {
+  display: flex;
+  align-items: baseline;
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  color: #f5f0eb;
+}
+.preloader__counter {
+  font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.preloader__percent {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: #c8a97e;
+  margin-left: 0.15em;
+}
+.preloader__text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 235, 0.4);
+}
+.preloader__bar {
+  width: 120px;
+  height: 1px;
+  background: rgba(245, 240, 235, 0.1);
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+.preloader__bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #c8a97e;
+  transition: width 0.1s linear;
+}
+.preloader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+
+/* ============================================
+   UTILITY CLASSES (replacing inline styles)
+   ============================================ */
+.mb-sm { margin-bottom: 0.75rem; }
+.mb-md { margin-bottom: 1rem; }
+.mb-lg { margin-bottom: 1.5rem; }
+.mb-xl { margin-bottom: 2rem; }
+.mt-md { margin-top: 1rem; }
+.mt-lg { margin-top: 1.5rem; }
+.text-center { text-align: center; }
+.text-accent { color: var(--c-accent); }
+.max-w-narrow { max-width: 520px; }
+.max-w-mid { max-width: 560px; }
+
+/* Mission & Vision responsive 2-col grid */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.two-col-grid__card {
+  padding: 2.5rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
 }
 
 /* ============================================
@@ -2675,6 +2755,11 @@ ul, ol {
   .back-to-top {
     right: 4.5rem;
     bottom: 1.25rem;
+  }
+  
+  .two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 
