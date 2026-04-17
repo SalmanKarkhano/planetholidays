@@ -1,9 +1,2 @@
-# Clean URLs (optional — removes .html from paths)
-/about      /about.html       200
-/destinations /destinations.html 200
-/contact    /contact.html     200
-/offers     /offers.html      200
-/events     /events.html      200
-/blog       /blog.html        200
-
-# Custom 404 (Cloudflare Pages also looks for 404.html automatically)
+# Cloudflare Pages has built-in pretty URLs (.html stripping)
+# No rewrites needed — just keep 404.html in root

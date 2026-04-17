@@ -372,9 +372,8 @@
   // IMAGE LAZY LOADING ENHANCEMENT
   // ============================================
   function initLazyImages() {
-    var images = document.querySelectorAll('img[src*="unsplash"]');
+    var images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(function (img) {
-      img.loading = 'lazy';
       img.decoding = 'async';
 
       img.addEventListener('load', function () {
@@ -694,16 +693,13 @@
   // CLIP-PATH IMAGE REVEALS
   // ============================================
   function initClipReveals() {
-    // Only target actual image elements, skip horizontal scroll cards
-    var images = document.querySelectorAll('.dest-card__img, .split__img, .about-hero__media img');
-    if (!images.length) return;
+    // Clip-path reveals on standalone images (not inside cards — cards use .reveal)
+    var wrappers = document.querySelectorAll('.split__img, .about-hero__media');
+    if (!wrappers.length) return;
 
-    images.forEach(function (img) {
-      // Skip images inside horizontal scroll section
-      if (img.closest('[data-horizontal-scroll]')) return;
-      img.style.clipPath = 'inset(100% 0 0 0)';
-      img.style.transition = 'clip-path 1s cubic-bezier(0.77, 0, 0.175, 1)';
-      img.style.willChange = 'clip-path';
+    wrappers.forEach(function (wrap) {
+      wrap.style.clipPath = 'inset(100% 0 0 0)';
+      wrap.style.transition = 'clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1)';
     });
 
     var observer = new IntersectionObserver(function (entries) {
@@ -713,11 +709,10 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '50px' });
+    }, { threshold: 0.05, rootMargin: '100px' });
 
-    images.forEach(function (img) {
-      if (img.closest('[data-horizontal-scroll]')) return;
-      if (img.style.clipPath) observer.observe(img);
+    wrappers.forEach(function (wrap) {
+      observer.observe(wrap);
     });
   }
 
