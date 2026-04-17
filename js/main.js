@@ -694,15 +694,16 @@
   // CLIP-PATH IMAGE REVEALS
   // ============================================
   function initClipReveals() {
-    var images = document.querySelectorAll('.dest-card__img, .experience-card__img, .dest-full-card__img, .about-hero__media img, .split-section__media img');
+    // Only target actual image elements, skip horizontal scroll cards
+    var images = document.querySelectorAll('.dest-card__img, .split__img, .about-hero__media img');
     if (!images.length) return;
 
     images.forEach(function (img) {
-      var wrap = img.closest('.dest-card__visual') || img.closest('.experience-card__img') || img.parentElement;
-      if (!wrap) return;
-      wrap.style.clipPath = 'inset(100% 0 0 0)';
-      wrap.style.transition = 'clip-path 1s cubic-bezier(0.77, 0, 0.175, 1)';
-      wrap.style.willChange = 'clip-path';
+      // Skip images inside horizontal scroll section
+      if (img.closest('[data-horizontal-scroll]')) return;
+      img.style.clipPath = 'inset(100% 0 0 0)';
+      img.style.transition = 'clip-path 1s cubic-bezier(0.77, 0, 0.175, 1)';
+      img.style.willChange = 'clip-path';
     });
 
     var observer = new IntersectionObserver(function (entries) {
@@ -712,11 +713,11 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1, rootMargin: '50px' });
 
     images.forEach(function (img) {
-      var wrap = img.closest('.dest-card__visual') || img.closest('.experience-card__img') || img.parentElement;
-      if (wrap) observer.observe(wrap);
+      if (img.closest('[data-horizontal-scroll]')) return;
+      if (img.style.clipPath) observer.observe(img);
     });
   }
 
