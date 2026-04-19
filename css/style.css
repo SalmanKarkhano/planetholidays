@@ -283,21 +283,15 @@ body.cursor--text .cursor__dot {
   gap: 0.6rem;
 }
 
-.header__logo-mark {
-  font-size: 1.1rem;
-  color: var(--c-accent);
-  transition: transform var(--dur-med) var(--ease-out-expo);
+.header__logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  transition: opacity var(--dur-fast);
 }
 
-.header__logo:hover .header__logo-mark {
-  transform: rotate(90deg) scale(1.2);
-}
-
-.header__logo-text {
-  font-family: var(--f-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.header__logo:hover .header__logo-img {
+  opacity: 0.85;
 }
 
 .header__nav {
