@@ -709,29 +709,13 @@
 
   // ============================================
   // CLIP-PATH IMAGE REVEALS
+  // All .split__img elements are already inside .reveal parents which
+  // handle entrance animations via opacity/transform. Applying an
+  // additional clip-path animation here created a double-dependency on
+  // two separate IntersectionObservers — if either failed to fire, images
+  // would remain permanently hidden. The .reveal parent animation is
+  // sufficient and more reliable.
   // ============================================
-  function initClipReveals() {
-    var wrappers = document.querySelectorAll('.split__img, .about-hero__media');
-    if (!wrappers.length) return;
-
-    wrappers.forEach(function (wrap) {
-      wrap.style.clipPath = 'inset(100% 0 0 0)';
-      wrap.style.transition = 'clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1)';
-    });
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.style.clipPath = 'inset(0 0 0 0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05, rootMargin: '100px' });
-
-    wrappers.forEach(function (wrap) {
-      observer.observe(wrap);
-    });
-  }
 
   // ============================================
   // FLOATING DECORATIVE ORBS
@@ -988,7 +972,6 @@
     initBackToTop();
     initMagneticButtons();
     init3DTilt();
-    initClipReveals();
     initFloatingDecor();
     initFooterReveal();
     initStickyCTABar();
