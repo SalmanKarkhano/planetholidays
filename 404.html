@@ -3,126 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Page Not Found | Planet Holidays</title>
-  <meta name="robots" content="noindex">
-
+  <title>404 — Page Not Found · Planet Holidays</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
-
   <style>
-    .error-page {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
-    .error-page__code {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(6rem, 20vw, 12rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      color: rgba(200, 169, 126, 0.12);
-      margin-bottom: -1rem;
-    }
-    .error-page__title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-weight: 700;
-      color: #f5f0eb;
-      margin-bottom: 1rem;
-    }
-    .error-page__text {
-      font-family: 'Inter', sans-serif;
-      color: #a09890;
-      max-width: 420px;
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-    }
-    .error-page__links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 1.5rem;
-    }
-    .error-page__link {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      color: #a09890;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 100px;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-    .error-page__link:hover {
-      color: #c8a97e;
-      border-color: rgba(200, 169, 126, 0.4);
-    }
+    .error-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+    .error-page__code{font-family:var(--f-display);font-size:clamp(8rem,20vw,18rem);font-weight:300;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#0a4a6e,#0f9b8e,#c8a868);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .error-page__title{font-family:var(--f-display);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;margin:1.5rem 0 1rem;color:var(--c-text-dim)}
+    .error-page__desc{font-size:.95rem;color:var(--c-text-muted);max-width:420px;margin-bottom:2.5rem;line-height:1.6}
   </style>
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<!-- ===================== NAVIGATION ===================== -->
-<nav class="nav" id="nav">
-  <div class="container nav__inner">
-    <a href="index.html" class="nav__logo">
-      <span class="nav__logo-icon">✦</span>
-      Planet Holidays
+  <header class="header is-scrolled" id="header">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark">◆</span><span class="header__logo-text">Planet Holidays</span>
     </a>
-    <div class="nav__links">
-      <a href="index.html" class="nav__link">Home</a>
-      <a href="about.html" class="nav__link">About</a>
-      <a href="destinations.html" class="nav__link">Destinations</a>
-      <a href="offers.html" class="nav__link">Offers</a>
-      <a href="events.html" class="nav__link">Events</a>
-      <a href="blog.html" class="nav__link">Blog</a>
-      <a href="contact.html" class="nav__link">Contact</a>
-      <a href="contact.html" class="nav__cta">Book a Trip</a>
-    </div>
-    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</nav>
+    <nav class="header__nav">
+      <a href="destinations.html" class="header__link">Destinations</a>
+      <a href="about.html" class="header__link">About</a>
+      <a href="contact.html" class="header__link">Contact</a>
+    </nav>
+  </header>
 
-<div class="nav__mobile" id="navMobile">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="destinations.html">Destinations</a>
-  <a href="offers.html">Offers</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="btn btn--primary" style="margin-top: 1rem;">Book a Trip</a>
-</div>
-
-<main id="main-content">
-  <div class="error-page">
+  <main class="error-page">
     <div class="error-page__code">404</div>
-    <h1 class="error-page__title">Lost in paradise</h1>
-    <p class="error-page__text">The page you're looking for has drifted away. Let's get you back to planning your dream getaway.</p>
-    <a href="index.html" class="btn btn--primary">Back to Home <span class="btn__arrow">→</span></a>
-    <div class="error-page__links">
-      <a href="destinations.html" class="error-page__link">Destinations</a>
-      <a href="offers.html" class="error-page__link">Offers</a>
-      <a href="blog.html" class="error-page__link">Blog</a>
-      <a href="contact.html" class="error-page__link">Contact</a>
-    </div>
-  </div>
-</main>
-
-<script src="js/lenis.min.js"></script>
-<script src="js/main.js"></script>
+    <h1 class="error-page__title">This island doesn't exist</h1>
+    <p class="error-page__desc">
+      The page you're looking for has drifted out to sea. Let's get you back to paradise.
+    </p>
+    <a href="index.html" class="btn btn--primary">
+      <span class="btn__text">Return Home</span>
+      <span class="btn__arrow">→</span>
+    </a>
+  </main>
 </body>
 </html>
