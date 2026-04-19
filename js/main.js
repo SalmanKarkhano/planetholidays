@@ -39,6 +39,8 @@
   // LENIS SMOOTH SCROLL
   // ============================================
   var lenis;
+  /* Expose globally so awwwards.js can integrate ScrollTrigger */
+  Object.defineProperty(window, 'lenis', { get: function() { return lenis; }, configurable: true });
   function initLenis() {
     if (typeof Lenis === 'undefined') return;
     lenis = new Lenis({
@@ -48,11 +50,23 @@
       infinite: false
     });
 
-    function raf(time) {
-      lenis.raf(time);
+    /* If GSAP ticker is available, use it for Lenis (smoother, single rAF) */
+    if (typeof gsap !== 'undefined') {
+      gsap.ticker.add(function(time) {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+      /* Also feed Lenis scroll events to ScrollTrigger */
+      if (typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+      }
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
   }
 
   // ============================================
@@ -195,6 +209,9 @@
   function initHorizontalScroll() {
     var section = document.querySelector('[data-horizontal-scroll]');
     if (!section) return;
+
+    /* If GSAP is available, awwwards.js handles this with ScrollTrigger */
+    if (typeof gsap !== 'undefined' && window.innerWidth >= 768) return;
 
     if (window.innerWidth < 768) {
       var track = section.querySelector('.horizontal-track');
@@ -413,6 +430,9 @@
   // ============================================
   function initCustomCursor() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
+    /* awwwards.js installs the orbital cursor — skip this one */
+    /* It will be removed and replaced by upgradeCursor() in awwwards.js */
+    return;
 
     var cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
@@ -721,8 +741,10 @@
   // FLOATING DECORATIVE ORBS
   // ============================================
   function initFloatingDecor() {
+    /* Floating orbs removed — awwwards.js handles removal */
     var decor = document.querySelector('.floating-decor');
     if (!decor) return;
+    return; /* Early exit — orbs are removed by awwwards.js */
 
     var style = document.createElement('style');
     style.textContent = [

@@ -16,7 +16,7 @@
   
   --c-text: #f5f0eb;
   --c-text-secondary: #a09890;
-  --c-text-muted: #6b6560;
+  --c-text-muted: #8a8480; /* Upgraded from #6b6560 — WCAG AA pass */
   --c-text-inverse: #0a0a0a;
   
   --c-accent: #c8a97e;
@@ -3331,3 +3331,316 @@ a:focus-visible {
   font-size: 0.78rem;
   color: var(--c-text-muted);
 }
+
+/* ============================================
+   AWWWARDS UPGRADE — New Design System Additions
+   ============================================ */
+
+/* ---- Hero: Clip-mask letterform structure ---- */
+.hero-clip {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+  overflow: hidden;
+}
+
+.hero-clip__img-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* GSAP animates clipPath on this element */
+  will-change: clip-path;
+}
+
+.hero-clip__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-clip__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  will-change: opacity, transform;
+}
+
+.hero__title--accent {
+  color: var(--c-accent);
+}
+
+.hero__tag-line {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--c-accent);
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}
+
+/* ---- Value card icon upgrade ---- */
+.value-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--c-bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--c-accent);
+  border: 1px solid var(--c-border);
+  transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
+}
+
+.value-card__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--c-accent);
+}
+
+.value-card:hover .value-card__icon {
+  background: rgba(200, 169, 126, 0.12);
+  border-color: rgba(200, 169, 126, 0.3);
+}
+
+/* ---- Editorial Divider (replaces marquee) ---- */
+.editorial-divider {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem var(--gutter);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  overflow: hidden;
+}
+
+.editorial-divider__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-border-light), transparent);
+}
+
+.editorial-divider__text {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+}
+
+/* ---- Press Badges (replaces plain text partner spans) ---- */
+.press-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  flex-wrap: wrap;
+}
+
+.press-badge {
+  opacity: 0.35;
+  transition: opacity var(--duration-medium) ease;
+  display: flex;
+  align-items: center;
+}
+
+.press-badge:hover {
+  opacity: 0.7;
+}
+
+.press-badge svg {
+  height: 28px;
+  width: auto;
+  fill: var(--c-text);
+  color: var(--c-text);
+}
+
+/* ---- GSAP clip reveal base state ---- */
+.reveal-clip {
+  /* GSAP controls clip-path — start state set inline by JS */
+  will-change: clip-path;
+}
+
+/* ---- Float card reveal base state ---- */
+.reveal-float {
+  /* GSAP handles opacity + transform */
+  will-change: transform, opacity;
+}
+
+/* ---- Streak reveal ---- */
+.reveal-streak {
+  will-change: transform, opacity;
+}
+
+/* ---- Orbital cursor outer ring spinning border ---- */
+/* (defined dynamically in awwwards.js) */
+
+/* ---- Scroll progress bar gradient update ---- */
+.scroll-progress {
+  background: linear-gradient(90deg, var(--c-accent), var(--c-ocean-light), var(--c-accent));
+  background-size: 200% 100%;
+  animation: progress-shimmer 3s linear infinite;
+}
+
+@keyframes progress-shimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ---- Page hero — fix inline styles ---- */
+.page-hero .t-caption {
+  margin-bottom: 1rem;
+}
+
+.page-hero .t-body-lg {
+  max-width: 560px;
+  margin-top: 1.5rem;
+}
+
+/* ---- Section header h2 data-gsap-split ---- */
+[data-gsap-split] {
+  overflow: visible; /* GSAP needs overflow visible for char animations */
+}
+
+/* ---- Horizontal section GSAP override ---- */
+[data-gsap-horizontal] .horizontal-track {
+  /* Removes the manual translation set by old JS */
+  will-change: transform;
+}
+
+/* ---- Nav: logo icon background removed (cluttered) ---- */
+/* Keep the ✦ but cleaner appearance */
+.nav__logo-icon {
+  font-size: 1.1rem;
+  color: var(--c-accent);
+  background: transparent;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  display: inline;
+}
+
+/* ---- Mobile menu upgrade — full-height with edge lettering ---- */
+.nav__mobile {
+  background: var(--c-bg);
+  /* Add subtle left edge accent bar */
+  border-left: 3px solid var(--c-accent);
+}
+
+.nav__mobile::before {
+  content: 'PLANET HOLIDAYS';
+  position: absolute;
+  bottom: 2rem;
+  left: -1.8rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--c-border-light);
+  pointer-events: none;
+}
+
+/* ---- Hero scroll indicator refined ---- */
+.hero__scroll {
+  position: absolute;
+  bottom: clamp(2rem, 4vw, 3rem);
+  right: var(--gutter);
+}
+
+/* ---- Floating orbs: hidden by default, removed by JS ---- */
+.floating-decor {
+  display: none;
+}
+
+/* ---- "View All" button upgrade ---- */
+.section-view-all {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* ---- Ensure value cards reveal properly ---- */
+.values-grid .value-card {
+  /* Remove CSS reveal state — GSAP handles it */
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Fix: destinations-grid with 6 cards now (added Sri Lanka) ---- */
+@media (min-width: 1025px) {
+  .destinations-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  /* Card 3,4,5 span 4 each = 12 columns total second row */
+}
+
+/* ---- Page hero inline style cleanup ---- */
+.page-hero__breadcrumb {
+  /* remove the need for reveal class on inner pages — 
+     GSAP page hero animation handles it */
+}
+
+/* ---- Testimonial carousel: fix double padding ---- */
+.testimonial-section.section {
+  /* Outer .section already has padding-block;
+     the inner section class doubled it */
+  padding-block: 0;
+}
+
+/* ---- Responsive: mobile hero clip ---- */
+@media (max-width: 768px) {
+  .hero-clip__img-layer {
+    /* On mobile, no clip-path animation — just full bleed */
+    clip-path: none !important;
+  }
+
+  .press-badges {
+    gap: 1.5rem;
+  }
+
+  .editorial-divider__text {
+    display: none; /* Show only lines on mobile */
+  }
+}
+
+/* ---- Section h2 data-gsap-split perspective ---- */
+[data-gsap-split] .gsap-char {
+  perspective: 400px;
+}
+
+/* ---- Destination card arrow consistent ---- */
+.dest-card--medium .dest-card__arrow {
+  display: flex;
+}
+
+/* ---- GSAP reveal: kill the old CSS transition on .reveal ---- */
+/* When GSAP is available, it takes over. If not, CSS fallback still works */
+.reveal {
+  opacity: 1; /* Override: GSAP sets initial state via set() */
+  transform: none;
+  transition: none;
+}
+
+/* Fallback: if GSAP fails to load, restore CSS animation */
+.no-gsap .reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s cubic-bezier(0.16,1,0.3,1),
+              transform 1s cubic-bezier(0.16,1,0.3,1);
+}
+
+.no-gsap .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ---- Additional utilities (replacing last inline styles) ---- */
+.mt-3xl { margin-top: var(--s-2xl); }
+.pb-md { padding-bottom: var(--s-xl); }
+.section--elevated { background: var(--c-bg-elevated); }
