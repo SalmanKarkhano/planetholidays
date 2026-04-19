@@ -514,9 +514,9 @@ ul, ol {
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgba(10, 10, 10, 0.2) 0%,
-    rgba(10, 10, 10, 0.4) 40%,
-    rgba(10, 10, 10, 0.85) 100%
+    rgba(10, 10, 10, 0.3) 0%,
+    rgba(10, 10, 10, 0.45) 40%,
+    rgba(10, 10, 10, 0.88) 100%
   );
 }
 
@@ -543,6 +543,7 @@ ul, ol {
 .hero__title {
   max-width: 900px;
   margin-bottom: var(--s-xl);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
 }
 
 .hero__title .line {
@@ -557,6 +558,7 @@ ul, ol {
 .hero__subtitle {
   max-width: 520px;
   margin-bottom: var(--s-2xl);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
 .hero__bottom {
@@ -798,8 +800,9 @@ ul, ol {
   inset: 0;
   background: linear-gradient(
     180deg,
-    transparent 40%,
-    rgba(10, 10, 10, 0.8) 100%
+    rgba(10, 10, 10, 0.05) 0%,
+    transparent 30%,
+    rgba(10, 10, 10, 0.88) 100%
   );
   transition: background var(--duration-medium) ease;
 }
@@ -807,8 +810,9 @@ ul, ol {
 .dest-card:hover .dest-card__overlay {
   background: linear-gradient(
     180deg,
+    rgba(10, 10, 10, 0.1) 0%,
     transparent 20%,
-    rgba(10, 10, 10, 0.9) 100%
+    rgba(10, 10, 10, 0.95) 100%
   );
 }
 
@@ -841,6 +845,7 @@ ul, ol {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .dest-card__price {
@@ -914,7 +919,7 @@ ul, ol {
   left: 0;
   right: 0;
   padding: 2rem 1.5rem;
-  background: linear-gradient(transparent, rgba(10, 10, 10, 0.85));
+  background: linear-gradient(transparent, rgba(10, 10, 10, 0.92));
 }
 
 .experience-card__tag {
@@ -931,6 +936,7 @@ ul, ol {
   font-size: 1.35rem;
   font-weight: 600;
   line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* ============================================
@@ -1213,7 +1219,7 @@ ul, ol {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(2px);
 }
 
@@ -1221,6 +1227,7 @@ ul, ol {
   max-width: 700px;
   margin-inline: auto;
   margin-bottom: var(--s-lg);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .cta-section__desc {
@@ -1567,7 +1574,7 @@ ul, ol {
 .dest-full-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 10, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 10, 0.92) 100%);
 }
 
 .dest-full-card__content {
@@ -1597,6 +1604,7 @@ ul, ol {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .dest-full-card__meta {
