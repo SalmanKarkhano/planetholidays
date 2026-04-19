@@ -2774,3 +2774,552 @@ ul, ol {
     text-align: left;
   }
 }
+
+/* ============================================
+   ACCESSIBILITY — Skip Link & Focus Styles
+   ============================================ */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 100001;
+  background: var(--c-accent);
+  color: var(--c-text-inverse);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   FORM — Validation & Success States
+   ============================================ */
+.form-input.is-error,
+.form-textarea.is-error,
+.form-input.is-error:focus,
+.form-textarea.is-error:focus {
+  border-color: var(--c-coral);
+}
+
+.form-error-msg {
+  font-size: 0.72rem;
+  color: var(--c-coral);
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.form-error-msg.is-visible {
+  display: block;
+}
+
+.form-success {
+  background: rgba(200, 169, 126, 0.08);
+  border: 1px solid var(--c-accent);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  display: none;
+}
+
+.form-success.is-visible {
+  display: block;
+}
+
+.form-success__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-success__title {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.form-success__text {
+  font-size: 0.95rem;
+  color: var(--c-text-secondary);
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+/* ============================================
+   STICKY BOOK NOW BAR
+   ============================================ */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9980;
+  background: rgba(17, 17, 17, 0.95);
+  border-top: 1px solid var(--c-border);
+  padding: 1rem clamp(1.5rem, 4vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.5s var(--ease-out-expo);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.sticky-cta-bar.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-cta-bar__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sticky-cta-bar__text {
+  font-family: var(--f-display);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.sticky-cta-bar__sub {
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  margin-top: 0.15rem;
+}
+
+.sticky-cta-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sticky-cta-bar__close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--c-border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  flex-shrink: 0;
+}
+
+.sticky-cta-bar__close:hover {
+  border-color: var(--c-coral);
+  color: var(--c-coral);
+}
+
+@media (max-width: 480px) {
+  .sticky-cta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+  .sticky-cta-bar__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ============================================
+   COOKIE CONSENT BANNER
+   ============================================ */
+.cookie-consent {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  max-width: 520px;
+  z-index: 9995;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(calc(100% + 2rem));
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.cookie-consent.is-visible {
+  transform: translateY(0);
+}
+
+.cookie-consent__title {
+  font-family: var(--f-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--c-text);
+}
+
+.cookie-consent__text {
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.cookie-consent__text a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cookie-consent__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cookie-consent__accept {
+  flex: 1;
+  min-width: 120px;
+}
+
+.cookie-consent__decline {
+  font-family: var(--f-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  cursor: pointer;
+  border: 1px solid var(--c-border);
+  background: transparent;
+  border-radius: var(--radius-full);
+  padding: 0.6rem 1.25rem;
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.cookie-consent__decline:hover {
+  border-color: var(--c-border-light);
+  color: var(--c-text);
+}
+
+/* ============================================
+   OFFER CARDS — Missing Styles
+   ============================================ */
+.offer-card__tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(10, 10, 10, 0.85);
+  color: var(--c-accent);
+  border: 1px solid rgba(200, 169, 126, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.offer-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.offer-card__duration {
+  font-size: 0.72rem;
+  color: var(--c-accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.offer-card__validity {
+  font-size: 0.7rem;
+  color: var(--c-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.offer-card__features {
+  list-style: none;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.offer-card__features li {
+  font-size: 0.8rem;
+  color: var(--c-text-secondary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.offer-card__features li::before {
+  content: '✦';
+  font-size: 0.45rem;
+  color: var(--c-accent);
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+
+.offer-card__price-old {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+  text-decoration: line-through;
+  margin-bottom: 0.1rem;
+}
+
+.offer-card__price-new {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.offer-card__price-unit {
+  font-size: 0.68rem;
+  color: var(--c-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.15rem;
+}
+
+/* ============================================
+   HOW IT WORKS — Step Card Number & Connector
+   ============================================ */
+.step-card__number {
+  font-family: var(--f-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.step-card__connector {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--c-border-light);
+  font-size: 1.5rem;
+  padding-top: 3.5rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .step-card__connector {
+    display: none;
+  }
+}
+
+/* ============================================
+   NEWSLETTER — Success & Error States
+   ============================================ */
+.newsletter-form__success {
+  font-size: 0.82rem;
+  color: var(--c-accent);
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.newsletter-form__success.is-visible {
+  display: block;
+}
+
+.newsletter-form__error {
+  font-size: 0.82rem;
+  color: var(--c-coral);
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.newsletter-form__error.is-visible {
+  display: block;
+}
+
+/* ============================================
+   TRUST BADGES SECTION
+   ============================================ */
+.trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.trust-badge__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--c-bg-subtle);
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   FAQ PAGE — Standalone styles
+   ============================================ */
+.faq-page-grid {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.faq-category {
+  margin-bottom: 3rem;
+}
+
+.faq-category__title {
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* ============================================
+   PRIVACY / TERMS PAGES
+   ============================================ */
+.legal-content {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.legal-content h2 {
+  font-family: var(--f-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-content p {
+  font-size: 0.95rem;
+  color: var(--c-text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.legal-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.legal-content ul li {
+  font-size: 0.95rem;
+  color: var(--c-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.35rem;
+}
+
+.legal-content a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-last-updated {
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   TESTIMONIAL CAROUSEL — Stars line fix
+   ============================================ */
+.testimonial-carousel__slide .testimonial__stars {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-carousel__slide blockquote {
+  font-family: var(--f-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.testimonial-carousel__slide blockquote::before {
+  content: '"';
+  display: block;
+  font-family: var(--f-display);
+  font-size: 3.5rem;
+  color: var(--c-accent);
+  line-height: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.testimonial-carousel__slide .testimonial__name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+
+.testimonial-carousel__slide .testimonial__role {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+}

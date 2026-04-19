@@ -772,6 +772,202 @@
   // ============================================
   // INITIALIZE EVERYTHING
   // ============================================
+  // STICKY BOOK NOW BAR
+  // ============================================
+  function initStickyCTABar() {
+    var hero = document.querySelector('.hero, .page-hero');
+    if (!hero) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'sticky-cta-bar';
+    bar.innerHTML =
+      '<div class="sticky-cta-bar__info">' +
+        '<span class="sticky-cta-bar__text">Ready to plan your dream holiday?</span>' +
+        '<span class="sticky-cta-bar__sub">Maldives & Sri Lanka — tailored just for you</span>' +
+      '</div>' +
+      '<div class="sticky-cta-bar__actions">' +
+        '<a href="contact.html" class="btn btn--primary btn--sm">Book a Trip <span class="btn__arrow">→</span></a>' +
+        '<button class="sticky-cta-bar__close" aria-label="Dismiss">✕</button>' +
+      '</div>';
+    document.body.appendChild(bar);
+
+    var dismissed = false;
+    var heroBottom = 0;
+
+    function updateHeroBottom() {
+      heroBottom = hero.getBoundingClientRect().bottom + window.scrollY;
+    }
+
+    updateHeroBottom();
+    window.addEventListener('resize', updateHeroBottom, { passive: true });
+
+    addScrollListener(function (scrollY) {
+      if (dismissed) return;
+      if (scrollY > heroBottom - 100) {
+        bar.classList.add('is-visible');
+      } else {
+        bar.classList.remove('is-visible');
+      }
+    });
+
+    bar.querySelector('.sticky-cta-bar__close').addEventListener('click', function () {
+      dismissed = true;
+      bar.classList.remove('is-visible');
+    });
+  }
+
+  // ============================================
+  // COOKIE CONSENT BANNER
+  // ============================================
+  function initCookieConsent() {
+    if (document.cookie.indexOf('ph_cookie_consent=') !== -1) return;
+    if (localStorage && localStorage.getItem('ph_cookie_consent')) return;
+
+    var banner = document.createElement('div');
+    banner.className = 'cookie-consent';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML =
+      '<p class="cookie-consent__title">🍪 We use cookies</p>' +
+      '<p class="cookie-consent__text">We use cookies to enhance your browsing experience and analyse site traffic. ' +
+      'By clicking "Accept", you consent to our use of cookies. ' +
+      '<a href="privacy-policy.html">Learn more</a></p>' +
+      '<div class="cookie-consent__actions">' +
+        '<button class="btn btn--primary btn--sm cookie-consent__accept">Accept All</button>' +
+        '<button class="cookie-consent__decline">Decline</button>' +
+      '</div>';
+    document.body.appendChild(banner);
+
+    function dismiss(accepted) {
+      banner.classList.remove('is-visible');
+      var expires = new Date(Date.now() + 365 * 864e5).toUTCString();
+      document.cookie = 'ph_cookie_consent=' + (accepted ? '1' : '0') + '; expires=' + expires + '; path=/';
+      if (localStorage) localStorage.setItem('ph_cookie_consent', accepted ? '1' : '0');
+    }
+
+    setTimeout(function () {
+      banner.classList.add('is-visible');
+    }, 1500);
+
+    banner.querySelector('.cookie-consent__accept').addEventListener('click', function () { dismiss(true); });
+    banner.querySelector('.cookie-consent__decline').addEventListener('click', function () { dismiss(false); });
+  }
+
+  // ============================================
+  // CONTACT FORM — Enhanced Validation
+  // ============================================
+  function initContactFormValidation() {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    var successEl = document.createElement('div');
+    successEl.className = 'form-success';
+    successEl.innerHTML =
+      '<div class="form-success__icon">✦</div>' +
+      '<h3 class="form-success__title">Inquiry Sent!</h3>' +
+      '<p class="form-success__text">Thank you for reaching out. One of our travel experts will get back to you within 24 hours.</p>';
+    form.parentNode.insertBefore(successEl, form.nextSibling);
+
+    var requiredFields = form.querySelectorAll('[required]');
+
+    requiredFields.forEach(function (field) {
+      var errorEl = document.createElement('span');
+      errorEl.className = 'form-error-msg';
+      errorEl.setAttribute('aria-live', 'polite');
+      errorEl.textContent = field.tagName === 'SELECT' ? 'Please make a selection.' : 'This field is required.';
+      if (field.type === 'email') errorEl.textContent = 'Please enter a valid email address.';
+      field.parentNode.appendChild(errorEl);
+
+      field.addEventListener('blur', function () { validateField(field, errorEl); });
+      field.addEventListener('input', function () {
+        if (field.classList.contains('is-error')) validateField(field, errorEl);
+      });
+    });
+
+    function validateField(field, errorEl) {
+      var valid = field.checkValidity();
+      field.classList.toggle('is-error', !valid);
+      errorEl.classList.toggle('is-visible', !valid);
+      return valid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allValid = true;
+
+      requiredFields.forEach(function (field) {
+        var errorEl = field.parentNode.querySelector('.form-error-msg');
+        if (errorEl && !validateField(field, errorEl)) allValid = false;
+      });
+
+      if (!allValid) return;
+
+      var btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      var firstName = (form.querySelector('#firstName') || {}).value || '';
+      var lastName  = (form.querySelector('#lastName')  || {}).value || '';
+      var email       = (form.querySelector('#email')       || {}).value || '';
+      var destination = (form.querySelector('#destination') || {}).value || '';
+      var message     = (form.querySelector('#message')     || {}).value || '';
+
+      var subject = encodeURIComponent('Trip Inquiry from ' + firstName + ' ' + lastName);
+      var body = encodeURIComponent(
+        'Name: ' + firstName + ' ' + lastName + '\n' +
+        'Email: ' + email + '\n' +
+        'Destination: ' + destination + '\n\n' +
+        message
+      );
+
+      window.location.href = 'mailto:hello@planetholidays.travel?subject=' + subject + '&body=' + body;
+
+      setTimeout(function () {
+        form.style.display = 'none';
+        successEl.classList.add('is-visible');
+      }, 600);
+    });
+  }
+
+  // ============================================
+  // NEWSLETTER FORM — Enhanced Feedback
+  // ============================================
+  function initNewsletterForms() {
+    var forms = document.querySelectorAll('.newsletter-form');
+    if (!forms.length) return;
+
+    forms.forEach(function (form) {
+      var note = form.parentNode.querySelector('.newsletter-form__note');
+      if (!note) return;
+
+      var successEl = document.createElement('p');
+      successEl.className = 'newsletter-form__success';
+      successEl.textContent = '✦ You\'re subscribed! Welcome to the community.';
+      note.parentNode.insertBefore(successEl, note);
+
+      var errorEl = document.createElement('p');
+      errorEl.className = 'newsletter-form__error';
+      errorEl.textContent = 'Please enter a valid email address.';
+      note.parentNode.insertBefore(errorEl, note);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = form.querySelector('input[type="email"]');
+        if (!input || !input.checkValidity()) {
+          errorEl.classList.add('is-visible');
+          input && input.classList.add('is-error');
+          return;
+        }
+        errorEl.classList.remove('is-visible');
+        input.classList.remove('is-error');
+        form.querySelector('.btn').textContent = 'Subscribed ✓';
+        form.querySelector('.btn').disabled = true;
+        successEl.classList.add('is-visible');
+      });
+    });
+  }
+
+  // ============================================
   initPreloader();
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -782,7 +978,7 @@
     initHorizontalScroll();
     initCounters();
     initFAQ();
-    initContactForm();
+    initContactFormValidation();
     initSmoothAnchors();
     initLazyImages();
     initCustomCursor();
@@ -795,6 +991,9 @@
     initClipReveals();
     initFloatingDecor();
     initFooterReveal();
+    initStickyCTABar();
+    initCookieConsent();
+    initNewsletterForms();
 
     // Fire initial scroll to populate all unified handlers
     onScroll();

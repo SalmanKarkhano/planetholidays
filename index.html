@@ -10,9 +10,11 @@
   <meta property="og:title" content="Planet Holidays — Luxury Travel to the Maldives & Sri Lanka">
   <meta property="og:description" content="Bespoke luxury packages, private island stays, and unforgettable adventures in the Maldives and Sri Lanka.">
   <meta property="og:image" content="https://planetholidays.pages.dev/images/1514282401047-d79a71a590e8.webp">
+  <meta property="og:url" content="https://planetholidays.travel/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  
+  <link rel="canonical" href="https://planetholidays.travel/">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +56,8 @@
   <link rel="preload" as="image" href="images/1514282401047-d79a71a590e8-hero.webp" fetchpriority="high">
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- Preloader -->
 <div class="preloader" id="preloader">
@@ -105,7 +109,7 @@
     <a href="contact.html" class="btn btn--primary" style="margin-top: 1rem;">Book a Trip</a>
   </div>
 
-  <main>
+  <main id="main-content">
 
   <!-- ===================== HERO ===================== -->
   <section class="hero">
@@ -468,20 +472,74 @@
     </div>
   </section>
 
-  <!-- ===================== TESTIMONIAL ===================== -->
+  <!-- ===================== TESTIMONIALS ===================== -->
   <section class="section">
     <div class="testimonial-section section">
       <div class="container">
-        <div class="testimonial reveal">
-          <div class="testimonial__stars">★★★★★</div>
-          <blockquote class="testimonial__quote">
-            Planet Holidays made our honeymoon in the Maldives absolutely magical. 
-            Every detail was perfect — from the seaplane transfer to the private 
-            candlelit dinner on the beach. We didn't have to worry about a thing.
-          </blockquote>
-          <div class="testimonial__author">
-            <span class="testimonial__name">Sarah & James M.</span>
-            <span class="testimonial__role">Honeymoon Trip — Bandos Maldives</span>
+        <div class="section-header section-header--center reveal">
+          <p class="section-header__tag t-caption">What Travelers Say</p>
+          <h2 class="section-header__title t-h2">Real Stories, Real Joy</h2>
+        </div>
+
+        <div class="testimonial-carousel reveal">
+          <div class="testimonial-carousel__track">
+            <div class="testimonial-carousel__slide">
+              <div class="testimonial__stars">★★★★★</div>
+              <blockquote class="testimonial__quote">
+                Planet Holidays made our honeymoon in the Maldives absolutely magical.
+                Every detail was perfect — from the seaplane transfer to the private
+                candlelit dinner on the beach. We didn't have to worry about a thing.
+              </blockquote>
+              <div class="testimonial__author">
+                <span class="testimonial__name">Sarah &amp; James M.</span>
+                <span class="testimonial__role">Honeymoon — Bandos Maldives</span>
+              </div>
+            </div>
+
+            <div class="testimonial-carousel__slide">
+              <div class="testimonial__stars">★★★★★</div>
+              <blockquote class="testimonial__quote">
+                From booking to the final day of our trip, the team was incredibly
+                supportive. They went above and beyond to make sure everything was
+                perfect. Highly recommend Planet Holidays to anyone visiting the Maldives!
+              </blockquote>
+              <div class="testimonial__author">
+                <span class="testimonial__name">Maria K.</span>
+                <span class="testimonial__role">Family Trip — Olhuveli Beach &amp; Spa</span>
+              </div>
+            </div>
+
+            <div class="testimonial-carousel__slide">
+              <div class="testimonial__stars">★★★★★</div>
+              <blockquote class="testimonial__quote">
+                The adventure package was worth every penny. Scuba diving at Maaya
+                Thila, the dolphin cruise, paddle boarding — an adrenaline-filled
+                week I'll never forget. Thank you Planet Holidays!
+              </blockquote>
+              <div class="testimonial__author">
+                <span class="testimonial__name">Tom H.</span>
+                <span class="testimonial__role">Adventure Getaway — Hudhuran Fushi</span>
+              </div>
+            </div>
+
+            <div class="testimonial-carousel__slide">
+              <div class="testimonial__stars">★★★★★</div>
+              <blockquote class="testimonial__quote">
+                Our trip to the Maldives was absolutely magical! The crystal-clear
+                waters, incredible sunsets, and personal touches from the Planet
+                Holidays team made it an experience of a lifetime.
+              </blockquote>
+              <div class="testimonial__author">
+                <span class="testimonial__name">Leah R.</span>
+                <span class="testimonial__role">Wellness Retreat — Kandooma</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-carousel__nav">
+            <button class="testimonial-carousel__btn testimonial-carousel__btn--prev" aria-label="Previous">←</button>
+            <div class="testimonial-carousel__dots"></div>
+            <button class="testimonial-carousel__btn testimonial-carousel__btn--next" aria-label="Next">→</button>
           </div>
         </div>
       </div>
@@ -563,9 +621,10 @@
           <div class="footer__links">
             <a href="about.html" class="footer__link">About Us</a>
             <a href="contact.html" class="footer__link">Contact</a>
-            <a href="#" class="footer__link">Careers</a>
-            <a href="#" class="footer__link">Privacy Policy</a>
-            <a href="#" class="footer__link">Terms of Service</a>
+            <a href="contact.html" class="footer__link">Careers</a>
+            <a href="faq.html" class="footer__link">FAQ</a>
+            <a href="privacy-policy.html" class="footer__link">Privacy Policy</a>
+            <a href="terms.html" class="footer__link">Terms of Service</a>
           </div>
         </div>
         
@@ -589,8 +648,12 @@
       <div class="footer__bottom">
         <p class="footer__copy">&copy; 2026 Planet Holidays. All rights reserved.</p>
         <div class="footer__socials">
-          <a href="https://facebook.com/planetholidaysmv" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
-          <a href="https://www.instagram.com/planet.holidaysmv/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+          <a href="https://facebook.com/planetholidaysmv" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/planet.holidaysmv/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
         </div>
       </div>
     </div>
